@@ -37,7 +37,7 @@ function NFTJail() {
 		metadataHash: string;
 	};
 
-	// TODO: combine state into a single object
+	// TODO: combine state into a single object.
 	const [ nfts, setNfts ] = useState<INFT[]>( [] );
 	const [ selectedNft, setSelectedNft ] = useState<INFT>();
 	const [ selectedNftURL, setSelectedNftURL ] = useState<string>();
