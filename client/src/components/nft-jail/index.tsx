@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {useMoralis, useMoralisWeb3Api} from 'react-moralis';
+import { useMoralis, useMoralisWeb3Api } from 'react-moralis';
 import axios from 'axios';
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 
+import { API_BASE_URL } from '../../config/constants';
 import Step from '../step';
 import DevNotes from './dev-notes';
 
@@ -56,11 +57,8 @@ function NFTJail() {
 		if (isAuthenticated) {
 			// Fixes intermittent error about a missing web3 instance
 			enableWeb3();
-		} else {
-
 		}
 
-		console.log( 'isAuthenticated changed', isAuthenticated );
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isAuthenticated]);
 
@@ -208,7 +206,7 @@ function NFTJail() {
 		setIsGenerateImageRunning(true);
 		setGeneratedNft(undefined);
 
-		axios.post( "http://localhost:3001/create-jailed-token", {
+		axios.post( API_BASE_URL + '/create-jailed-token', {
 				user_address: user!.get( 'ethAddress' ),
 				token_address: selectedNft.token_address,
 				token_id: selectedNft.token_id
