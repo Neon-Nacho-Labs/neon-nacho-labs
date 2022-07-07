@@ -16,7 +16,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
 	<React.StrictMode>
-		<MoralisProvider serverUrl={process.env.REACT_APP_MORALIS_URL_TESTNET!} appId={process.env.REACT_APP_MORALIS_APP_ID_TESTNET!}>
+		<MoralisProvider serverUrl={process.env.REACT_APP_MORALIS_URL!} appId={process.env.REACT_APP_MORALIS_APP_ID!}>
 			<Router>
 				<ThemeProvider theme={theme}>
 					<CssBaseline />

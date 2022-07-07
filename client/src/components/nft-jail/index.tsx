@@ -11,6 +11,7 @@ import Grid from '@mui/material/Grid';
 import { DialogActions, DialogContent } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
 
 import Step from '../step';
 import DevNotes from './dev-notes';
@@ -46,7 +47,8 @@ function NFTJail() {
 	const [ isGenerateImageRunning, setIsGenerateImageRunning ] = useState<boolean>(false);
 	const [ isMintRunning, setIsMintRunning ] = useState<boolean>(false);
 	const [ ethValue, setEthValue ] = useState<number>(0);
-	const [ IPFSHash, setIPFSHash ] = useState<string>();
+	const [ isSnackBarOpen, setIsSnackBarOpen ] = useState<boolean>(false);
+	const [ snackBarMessage, setSnackBarMessage ] = useState<string>();
 
 	const ethers = Moralis.web3Library;
 
@@ -183,14 +185,16 @@ function NFTJail() {
 		};
 
 		setIsMintRunning(true);
-console.log( 'calling executeFunction', options );
+
 		Moralis.executeFunction(options)
 		.then(result => {
 			console.log( 'done', result );
 			setIsMintRunning(false);
 			setMintComplete(true);
 		}).catch(result => {
-			console.log( 'error', result );
+			console.log( result );
+			setSnackBarMessage(result?.error?.message || 'Error minting token. See browser console for more details.');
+			setIsSnackBarOpen(true);
 			setIsMintRunning(false);
 		});
 	}
@@ -203,7 +207,6 @@ console.log( 'calling executeFunction', options );
 		console.log( 'generating image...' );
 		setIsGenerateImageRunning(true);
 		setGeneratedNft(undefined);
-		setIPFSHash(undefined);
 
 		axios.post( "http://localhost:3001/create-jailed-token", {
 				user_address: user!.get( 'ethAddress' ),
@@ -215,9 +218,11 @@ console.log( 'calling executeFunction', options );
 				metadata: response.data.metadata,
 				metadataHash: response.data.metadataHash
 			} );
-			setIPFSHash(response.data.metadataHash)
 		}).catch( result => {
 			setIsGenerateImageRunning(false);
+			console.log(result);
+			setSnackBarMessage(result?.message || 'Error generating image. See browser console for more details.');
+			setIsSnackBarOpen(true);
 		});
 	}
 
@@ -241,8 +246,6 @@ console.log( 'calling executeFunction', options );
 	const toggleOpenDialog = () => {
 		setIsNftDialogOpen(!isNftDialogOpen);
 	}
-
-	let selectedNftSrc = selectedNft ? JSON.parse( selectedNft?.metadata as string )?.image : null;
 
 	return (
 		<Box>
@@ -340,6 +343,20 @@ console.log( 'calling executeFunction', options );
 					<Button onClick={toggleOpenDialog}>Close</Button>
 				</DialogActions>
 			</Dialog>
+			<Snackbar
+				open={isSnackBarOpen}
+				autoHideDuration={6000}
+				anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+				onClose={() => setIsSnackBarOpen(false)}
+			>
+				<Alert
+					severity="error"
+					sx={{ width: '100%' }}
+					onClose={() => setIsSnackBarOpen(false)}
+				>
+					{snackBarMessage}
+				</Alert>
+			</Snackbar>
 		</Box>
 	);
 }
