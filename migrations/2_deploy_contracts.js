@@ -6,4 +6,5 @@ module.exports = function(deployer, network) {
 		deployer.deploy(NFTJail);
 		deployer.deploy(SimpleNFT);
 	}
+	// TODO: change ownership after deploying
 };

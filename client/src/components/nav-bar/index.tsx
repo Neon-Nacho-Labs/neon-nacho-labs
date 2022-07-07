@@ -15,6 +15,8 @@ import Menu from '@mui/material/Menu';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import {Menu as MenuIcon} from '@mui/icons-material'
+import TwitterIcon from '@mui/icons-material/Twitter';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 const pages = [
 	{
@@ -39,23 +41,23 @@ function NavBar() {
 		<>
 			<AppBar position="static">
 				<Toolbar>
-				<Typography
-					variant="h6"
-					noWrap
-					component="a"
-					href="/"
-					sx={{
-					mr: 2,
-					display: { xs: 'none', md: 'flex' },
-					fontFamily: 'monospace',
-					fontWeight: 700,
-					letterSpacing: '.3rem',
-					color: 'inherit',
-					textDecoration: 'none',
-					}}
-				>
-					Neon Nacho Labs
-				</Typography>
+					<Typography
+						variant="h6"
+						noWrap
+						component="a"
+						href="/"
+						sx={{
+							mr: 2,
+							display: { xs: 'none', md: 'flex' },
+							fontFamily: 'Consolas,"Liberation Mono","Courier New",monospace;',
+							fontWeight: 700,
+							letterSpacing: '.3rem',
+							color: '#16E951',
+							textDecoration: 'none',
+						}}
+					>
+						Neon Nacho Labs
+					</Typography>
 
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 						<IconButton
@@ -72,24 +74,37 @@ function NavBar() {
 							id="menu-appbar"
 							anchorEl={anchorElNav}
 							anchorOrigin={{
-							vertical: 'bottom',
-							horizontal: 'left',
+								vertical: 'bottom',
+								horizontal: 'left',
 							}}
 							keepMounted
 							transformOrigin={{
-							vertical: 'top',
-							horizontal: 'left',
+								vertical: 'top',
+								horizontal: 'left',
 							}}
 							open={Boolean(anchorElNav)}
 							onClose={handleCloseNavMenu}
 							sx={{
-							display: { xs: 'block', md: 'none' },
+								display: { xs: 'block', md: 'none' },
 							}}
 						>
 							{pages.map((page) => (
-								<MenuItem key={page.label} onClick={handleCloseNavMenu}>
+								<MenuItem key={page.label} onClick={handleCloseNavMenu} sx={{
+									padding:0,
+									margin:0,
+									display: 'block',
+									width: '100%'
+								}}>
 									<Typography textAlign="center">
-										<Link to={page.link}>{page.label}</Link>
+										<Link to={page.link} style={{
+											textDecoration: 'none',
+											color: 'white',
+											padding: '.5rem',
+											display: 'block',
+											width: '100%'
+										}}>
+											{page.label}
+										</Link>
 									</Typography>
 								</MenuItem>
 							))}
@@ -97,22 +112,22 @@ function NavBar() {
 					</Box>
 
 					<Typography
-					variant="h5"
-					noWrap
-					component="a"
-					href=""
-					sx={{
-						mr: 2,
-						display: { xs: 'flex', md: 'none' },
-						flexGrow: 1,
-						fontFamily: 'monospace',
-						fontWeight: 700,
-						letterSpacing: '.3rem',
-						color: 'inherit',
-						textDecoration: 'none',
-					}}
+						variant="h5"
+						noWrap
+						component="a"
+						href=""
+						sx={{
+							mr: 2,
+							display: { xs: 'flex', md: 'none' },
+							flexGrow: 1,
+							fontFamily: 'monospace',
+							fontWeight: 700,
+							letterSpacing: '.3rem',
+							color: '#16E951',
+							textDecoration: 'none',
+						}}
 					>
-					Neon Nacho Labs
+						Neon Nacho Labs
 					</Typography>
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						{pages.map((page) => (
@@ -123,9 +138,18 @@ function NavBar() {
 								onClick={handleCloseNavMenu}
 								sx={{ my: 2, color: 'white', display: 'block' }}
 							>
-							{page.label}
+								{page.label}
 							</Button>
 						))}
+					</Box>
+
+					<Box sx={{ display: { xs: 'block', sm: 'flex' } }}>
+						<IconButton size="large" aria-label="show 4 new mails" color="inherit" href="https://twitter.com/traviswalter" LinkComponent="a">
+							<TwitterIcon />
+						</IconButton>
+						<IconButton size="large" aria-label="show 4 new mails" color="inherit" href="https://github.com/Neon-Nacho-Labs" LinkComponent="a">
+							<GitHubIcon />
+						</IconButton>
 					</Box>
 				</Toolbar>
 			</AppBar>
