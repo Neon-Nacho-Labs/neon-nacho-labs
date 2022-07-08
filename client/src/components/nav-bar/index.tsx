@@ -6,6 +6,8 @@ import {
   } from "react-router-dom";
 import NFTJail from '../nft-jail';
 import Home from '../home';
+import Coins from '../coins';
+import NFTCollections from '../nft-collections';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
@@ -17,15 +19,24 @@ import MenuItem from '@mui/material/MenuItem';
 import {Menu as MenuIcon} from '@mui/icons-material'
 import TwitterIcon from '@mui/icons-material/Twitter';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import MUILink from '@mui/material/Link';
 
 const pages = [
 	{
 		link: '/',
-		label: 'Home'
+		label: 'WTF'
 	},
 	{
 		link: '/nft-jail',
 		label: 'NFT Jail'
+	},
+	{
+		link: '/coins',
+		label: 'Coins'
+	},
+	{
+		link: '/nft-collections',
+		label: 'NFT Collections'
 	},
 ];
 
@@ -95,7 +106,7 @@ function NavBar() {
 									display: 'block',
 									width: '100%'
 								}}>
-									<Typography textAlign="center">
+									<Typography textAlign="left">
 										<Link to={page.link} style={{
 											textDecoration: 'none',
 											color: 'white',
@@ -108,6 +119,42 @@ function NavBar() {
 									</Typography>
 								</MenuItem>
 							))}
+							<MenuItem key="twitter" onClick={handleCloseNavMenu} sx={{
+								padding:0,
+								margin:0,
+								display: 'block',
+								width: '100%'
+							}}>
+								<Typography textAlign="left">
+									<MUILink href="https://twitter.com/traviswalter" sx={{
+											textDecoration: 'none',
+											color: 'white',
+											padding: '.5rem',
+											display: 'block',
+											width: '100%',
+										}}>
+										<TwitterIcon /> Twitter
+									</MUILink>
+								</Typography>
+							</MenuItem>
+							<MenuItem key="github" onClick={handleCloseNavMenu} sx={{
+								padding:0,
+								margin:0,
+								display: 'block',
+								width: '100%'
+							}}>
+								<Typography textAlign="left">
+									<MUILink href="https://github.com/Neon-Nacho-Labs" sx={{
+											textDecoration: 'none',
+											color: 'white',
+											padding: '.5rem',
+											display: 'block',
+											width: '100%',
+										}}>
+										<GitHubIcon /> Github
+									</MUILink>
+								</Typography>
+							</MenuItem>
 						</Menu>
 					</Box>
 
@@ -131,7 +178,6 @@ function NavBar() {
 					</Typography>
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						{pages.map((page) => (
-							// <NavLink to={page.link}>{page.label}</NavLink>
 							<Button
 								key={page.label}
 								href={page.link}
@@ -143,11 +189,11 @@ function NavBar() {
 						))}
 					</Box>
 
-					<Box sx={{ display: { xs: 'block', sm: 'flex' } }}>
-						<IconButton size="large" aria-label="show 4 new mails" color="inherit" href="https://twitter.com/traviswalter" LinkComponent="a">
+					<Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+						<IconButton size="large" color="inherit" href="https://twitter.com/traviswalter" LinkComponent="a">
 							<TwitterIcon />
 						</IconButton>
-						<IconButton size="large" aria-label="show 4 new mails" color="inherit" href="https://github.com/Neon-Nacho-Labs" LinkComponent="a">
+						<IconButton size="large" color="inherit" href="https://github.com/Neon-Nacho-Labs" LinkComponent="a">
 							<GitHubIcon />
 						</IconButton>
 					</Box>
@@ -157,6 +203,8 @@ function NavBar() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/nft-jail" element={<NFTJail />} />
+				<Route path="/coins" element={<Coins />} />
+				<Route path="/nft-collections" element={<NFTCollections />} />
 			</Routes>
 		</>
 	);

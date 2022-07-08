@@ -79,7 +79,6 @@ contract("NFTJail", accounts => {
 		const ownerOfToken = await nftJailInstance.ownerOf(currentTokenId);
 
 		assert.equal( ownerOfToken, accounts[1], 'Owner of token does not matchess address' );
-
 	});
 
 	it("should return correct token URI after successful mint", async () => {
@@ -100,7 +99,7 @@ contract("NFTJail", accounts => {
 
 	it("should accept eth in receive function", async () => {
 		const nftJailInstance = await NFTJail.deployed();
-		const previousBalance = await web3.eth.getBalance(nftJailInstance.address);
+		const originalBalance = await web3.eth.getBalance(nftJailInstance.address);
 		const weiToSend = 500000;
 		await truffleAssert.passes(
 			web3.eth.sendTransaction({
@@ -111,7 +110,47 @@ contract("NFTJail", accounts => {
 		);
 		const newBalance = await web3.eth.getBalance(nftJailInstance.address);
 
-		assert.equal(parseInt(newBalance), parseInt(previousBalance) + parseInt(weiToSend), "New balance is not correct");
+		assert.equal(parseInt(newBalance), parseInt(originalBalance) + parseInt(weiToSend), "New balance is not correct");
+	});
+
+	it("should have correct balances after withdrawal", async () => {
+		const nftJailInstance = await NFTJail.deployed();
+		const weiToSend = 100000000000000000; // Should be more than any gas fees
+		await truffleAssert.passes(
+			web3.eth.sendTransaction({
+				from: accounts[0],
+				to: nftJailInstance.address,
+				value: weiToSend
+			})
+		);
+		const originalContractBalance = await web3.eth.getBalance(nftJailInstance.address);
+		const originalUserBalance = await web3.eth.getBalance(accounts[0]);
+
+		await nftJailInstance.withdrawAll({from: accounts[0]});
+
+		const newContractBalance = await web3.eth.getBalance(nftJailInstance.address);
+		const newUserBalance = await web3.eth.getBalance(accounts[0]);
+
+		assert.isAbove(parseInt(newUserBalance), parseInt(originalUserBalance), "New user balance is not greater than orignal balance");
+		assert.isBelow(parseInt(newContractBalance), parseInt(originalContractBalance), "New contract balance is not less than orignal balance");
+		assert.notEqual(parseInt(originalContractBalance), 0, "Original contract balance is zero");
+		assert.equal(parseInt(newContractBalance), 0, "New contract balance is not zero");
+	});
+
+	it("owner can withdraw", async () => {
+		const nftJailInstance = await NFTJail.deployed();
+
+		await truffleAssert.passes(
+			nftJailInstance.withdrawAll({from: accounts[0]})
+		);
+	});
+
+	it("non-owner cannot withdraw", async () => {
+		const nftJailInstance = await NFTJail.deployed();
+
+		await truffleAssert.fails(
+			nftJailInstance.withdrawAll({from: accounts[1]})
+		);
 	});
 
 	/*******************

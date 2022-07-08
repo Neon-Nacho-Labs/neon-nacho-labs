@@ -251,6 +251,7 @@ function NFTJail() {
 				variant="h3"
 				noWrap
 				textAlign="center"
+				m="1rem"
 			>
 				NFT Jail
 			</Typography>
