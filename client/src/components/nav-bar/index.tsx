@@ -62,7 +62,7 @@ function NavBar() {
 							display: { xs: 'none', md: 'flex' },
 							fontFamily: 'Consolas,"Liberation Mono","Courier New",monospace;',
 							fontWeight: 700,
-							letterSpacing: '.3rem',
+							letterSpacing: '.2rem',
 							color: '#16E951',
 							textDecoration: 'none',
 						}}
@@ -167,9 +167,9 @@ function NavBar() {
 							mr: 2,
 							display: { xs: 'flex', md: 'none' },
 							flexGrow: 1,
-							fontFamily: 'monospace',
+							fontFamily: 'Consolas,"Liberation Mono","Courier New",monospace;',
 							fontWeight: 700,
-							letterSpacing: '.3rem',
+							letterSpacing: '.2rem',
 							color: '#16E951',
 							textDecoration: 'none',
 						}}

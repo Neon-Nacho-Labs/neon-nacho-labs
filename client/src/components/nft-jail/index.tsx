@@ -12,6 +12,7 @@ import { DialogActions, DialogContent } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
+import Link from '@mui/material/Link';
 
 import { API_BASE_URL } from '../../config/constants';
 import Step from '../step';
@@ -22,6 +23,7 @@ function NFTJail() {
 	const Web3Api = useMoralisWeb3Api();
 	const ETH_CHAIN = 'goerli';
 	const NFTJAIL_CONTRACT_ADDRESS = '0xF8a826586ee2bd9F1Fdd286F9E5099fd01096BC7';
+	const NFTJAIL_ETHERSCAN_URL = "https://goerli.etherscan.io/address/" + NFTJAIL_CONTRACT_ADDRESS;
 
 	// TODO: Move to separate interfaces file
 	interface INFT {
@@ -249,12 +251,56 @@ function NFTJail() {
 		<Box>
 			<Typography
 				variant="h3"
-				noWrap
 				textAlign="center"
 				m="1rem"
 			>
 				NFT Jail
 			</Typography>
+
+			<Typography
+				paragraph={true}
+				textAlign="center"
+			>
+				Mint a new NFT by putting your existing NFT behind bars. Free mint and donations accepted.
+			</Typography>
+
+			<Grid container justifyContent="center" spacing={{ xs: 0.5, sm: 2, md: 3 }}>
+				<Grid item key="baby-gob">
+					<img
+						src='images/baby-gob-jail-s-min.jpeg'
+						alt="Baby Gob in jail"
+						loading="lazy"
+						style={{height: 100, width: 100}}
+					/>
+				</Grid>
+				<Grid item key="zombie-hobo">
+					<img
+						src='images/hobo-jail-s-min.jpeg'
+						alt="Zombie Hobo in jail"
+						loading="lazy"
+						style={{height:100, width: 100}}
+					/>
+				</Grid>
+				<Grid item key="chain-runner">
+					<img
+						src='images/runner-in-jail-s-min.jpeg'
+						alt="Chain Runner in jail"
+						loading="lazy"
+						style={{height:100, width: 100}}
+					/>
+				</Grid>
+				<Grid item key="zombie" sx={{display: {xs:'none', sm: 'inline'}}}>
+					<img
+						src='images/zombie-jail-s-min.jpeg'
+						alt="Zombie in jail"
+						loading="lazy"
+						style={{height:100, width: 100}}
+					/>
+				</Grid>
+        	</Grid>
+
+			{/* TODO: Delete once using mainnet */}
+			<Alert severity="error">Currently running on testnet: {ETH_CHAIN}</Alert>
 
 			<Grid container spacing={2}>
 				<Grid item xs={12} sm={8}>
@@ -309,7 +355,7 @@ function NFTJail() {
 						setEthValue = {setEthValue}
 					/>
 
-					<Alert severity="info">If you'd like to mint directly from the contract, you'll need to get the IPFS hash from the 'Generate Image' step and enter that as an argument to the 'mint' function.</Alert>
+					<Alert severity="info">If you'd like to mint directly from <Link href={NFTJAIL_ETHERSCAN_URL}>the contract</Link>, you'll need to get the IPFS hash from the 'Generate Image' step and enter that as an argument to the 'mint' function.</Alert>
 				</Grid>
 				<Grid item xs={12} sm={4}>
 					<Typography
