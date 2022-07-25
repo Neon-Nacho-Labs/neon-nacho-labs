@@ -22,7 +22,7 @@ function NFTJail() {
 	const { authenticate, isAuthenticated, isAuthenticating, user, logout, Moralis } = useMoralis();
 	const Web3Api = useMoralisWeb3Api();
 	const ETH_CHAIN = 'goerli';
-	const NFTJAIL_CONTRACT_ADDRESS = '0xF8a826586ee2bd9F1Fdd286F9E5099fd01096BC7';
+	const NFTJAIL_CONTRACT_ADDRESS = '0x0D71CF48ef18652f585B26cC435343387BFB8EdC';
 	const NFTJAIL_ETHERSCAN_URL = "https://goerli.etherscan.io/address/" + NFTJAIL_CONTRACT_ADDRESS;
 
 	// TODO: Move to separate interfaces file

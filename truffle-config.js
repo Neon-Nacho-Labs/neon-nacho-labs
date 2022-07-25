@@ -55,6 +55,11 @@ module.exports = {
 				numberOfAddresses: 1
 			}),
 			network_id: 1,
+			// gas: 4000000,          // Gas limit.
+			gasPrice: 30000000000, // 30 gwei
+			// gasPrice: 61579212861,
+			maxFeePerGas: 50000000000, // Max per unit price (base + priority)
+			maxPriorityFeePerGas: 1510000000, // 1.51 gwei
 			skipDryRun: false
 		}
 	},

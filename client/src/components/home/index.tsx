@@ -28,7 +28,7 @@ function Home() {
 					variant="body1"
 					paragraph={true}
 				>
-					Everything on this site is experimental and most likely in an early in-progress-proof-of-concept stage. You'll find very little polish and more than likely a few bugs. Everything here is open source so feel free to take a look at <Link href="https://github.com/Neon-Nacho-Labs">the code</Link>, and to borrow, change, and critique to your heart's content.
+					Everything on this site is experimental and most likely in an early in-progress-proof-of-concept stage. You'll find very little polish and more than likely a few bugs. Everything here is open source so feel free to take a look at <Link href="https://github.com/Neon-Nacho-Labs">the code</Link>, and use anything that you find useful.
 				</Typography>
 				<Typography
 					variant="body1"
