@@ -21,9 +21,11 @@ import DevNotes from './dev-notes';
 function NFTJail() {
 	const { authenticate, isAuthenticated, isAuthenticating, user, logout, Moralis } = useMoralis();
 	const Web3Api = useMoralisWeb3Api();
-	const ETH_CHAIN = 'goerli';
-	const NFTJAIL_CONTRACT_ADDRESS = '0x0D71CF48ef18652f585B26cC435343387BFB8EdC';
-	const NFTJAIL_ETHERSCAN_URL = "https://goerli.etherscan.io/address/" + NFTJAIL_CONTRACT_ADDRESS;
+	const ETH_CHAIN = 'eth'; // eth = mainnet
+	// const NFTJAIL_CONTRACT_ADDRESS = '0x0D71CF48ef18652f585B26cC435343387BFB8EdC'; // goerli
+	// const NFTJAIL_ETHERSCAN_URL = "https://goerli.etherscan.io/address/" + NFTJAIL_CONTRACT_ADDRESS;
+	const NFTJAIL_CONTRACT_ADDRESS = '0xF8a826586ee2bd9F1Fdd286F9E5099fd01096BC7';
+	const NFTJAIL_ETHERSCAN_URL = "https://etherscan.io/address/" + NFTJAIL_CONTRACT_ADDRESS;
 
 	// TODO: Move to separate interfaces file
 	interface INFT {
@@ -261,7 +263,7 @@ function NFTJail() {
 				paragraph={true}
 				textAlign="center"
 			>
-				Mint a new NFT by putting your existing NFT behind bars. Free mint and donations accepted.
+				Mint a new NFT by putting your existing NFT behind bars (original NFT is unaffected). Free mint and donations accepted.
 			</Typography>
 
 			<Grid container justifyContent="center" spacing={{ xs: 0.5, sm: 2, md: 3 }}>
@@ -300,7 +302,7 @@ function NFTJail() {
         	</Grid>
 
 			{/* TODO: Delete once using mainnet */}
-			<Alert severity="error">Currently running on testnet: {ETH_CHAIN}</Alert>
+			{/* <Alert severity="error">Currently running on testnet: {ETH_CHAIN}</Alert> */}
 
 			<Grid container spacing={2}>
 				<Grid item xs={12} sm={8}>
@@ -355,7 +357,7 @@ function NFTJail() {
 						setEthValue = {setEthValue}
 					/>
 
-					<Alert severity="info">If you'd like to mint directly from <Link href={NFTJAIL_ETHERSCAN_URL}>the contract</Link>, you'll need to get the IPFS hash from the 'Generate Image' step and enter that as an argument to the 'mint' function.</Alert>
+					<Alert severity="info">If you'd like to mint directly from <Link href={NFTJAIL_ETHERSCAN_URL}>the contract</Link>, you'll need to get the IPFS hash from the 'Generate Image' step and enter it as the '_tokenURI' argument in the 'mint' function.</Alert>
 				</Grid>
 				<Grid item xs={12} sm={4}>
 					<Typography

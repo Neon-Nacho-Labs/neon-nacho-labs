@@ -42,10 +42,13 @@ module.exports = {
 				numberOfAddresses: 1
 			}),
 			network_id: 5,         // Rinkeby's id
-			gas: 5500000,          // Gas limit. Ropsten has a lower block limit than mainnet
+			// gas: 5500000,          // Gas limit. Ropsten has a lower block limit than mainnet
+			// gasPrice: 30000000000, // 30 gwei
 			gasPrice: 30000000000, // 30 gwei
-			confirmations: 2,      // # of confs to wait between deployments. (default: 0)
-			timeoutBlocks: 200,    // # of blocks before a deployment times out  (minimum/default: 50)
+			maxFeePerGas: 50000000000, // Max per unit price (base + priority)
+			maxPriorityFeePerGas: 1510000000, // 1.51 gwei
+			// confirmations: 2,      // # of confs to wait between deployments. (default: 0)
+			// timeoutBlocks: 200,    // # of blocks before a deployment times out  (minimum/default: 50)
 			skipDryRun: false    // Skip dry run before migrations? (default: false for public nets )
 		},
 		mainnet: {
@@ -56,16 +59,20 @@ module.exports = {
 			}),
 			network_id: 1,
 			// gas: 4000000,          // Gas limit.
-			gasPrice: 30000000000, // 30 gwei
+			// gasPrice: 30000000000, // 30 gwei
 			// gasPrice: 61579212861,
-			maxFeePerGas: 50000000000, // Max per unit price (base + priority)
+			maxFeePerGas: 40000000000, // Max per unit price (base + priority)
 			maxPriorityFeePerGas: 1510000000, // 1.51 gwei
-			skipDryRun: false
+			skipDryRun: true
 		}
 	},
 	compilers: {
 		solc: {
-			version: "^0.8.14"
+			version: "^0.8.15",
+			optimizer: {
+			   enabled: true,
+			   runs: 1000
+			 },
 		}
 	},
 	plugins: [
