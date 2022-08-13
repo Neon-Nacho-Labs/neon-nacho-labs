@@ -5,4 +5,4 @@ hi
 * lots of cleanup
 * combine state
 * separate out components
-* consistant use of spacing and quotes
+* consistent use of spacing and quotes
