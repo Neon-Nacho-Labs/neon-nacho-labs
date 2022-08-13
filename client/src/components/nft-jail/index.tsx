@@ -301,9 +301,6 @@ function NFTJail() {
 				</Grid>
         	</Grid>
 
-			{/* TODO: Delete once using mainnet */}
-			{/* <Alert severity="error">Currently running on testnet: {ETH_CHAIN}</Alert> */}
-
 			<Grid container spacing={2}>
 				<Grid item xs={12} sm={8}>
 					<Step
