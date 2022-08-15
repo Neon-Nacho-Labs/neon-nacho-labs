@@ -1,7 +1,7 @@
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
-function Coins() {
+function Tokens() {
 	return (
 		<Box>
 			<Typography
@@ -10,7 +10,7 @@ function Coins() {
 				textAlign="center"
 				m="1rem"
 			>
-				Coins
+				Tokens
 			</Typography>
 			<Box
 				sx={{
@@ -29,4 +29,4 @@ function Coins() {
 	);
 }
 
-export default Coins;
+export default Tokens;

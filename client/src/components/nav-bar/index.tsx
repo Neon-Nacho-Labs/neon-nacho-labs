@@ -6,7 +6,7 @@ import {
   } from "react-router-dom";
 import NFTJail from '../nft-jail';
 import Home from '../home';
-import Coins from '../coins';
+import Tokens from '../tokens';
 import NFTCollections from '../nft-collections';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -35,8 +35,8 @@ const pages = [
 		label: 'NFT Collections'
 	},
 	{
-		link: '/coins',
-		label: 'Coins'
+		link: '/tokens',
+		label: 'Tokens'
 	},
 ];
 
@@ -203,7 +203,7 @@ function NavBar() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/nft-jail" element={<NFTJail />} />
-				<Route path="/coins" element={<Coins />} />
+				<Route path="/tokens" element={<Tokens />} />
 				<Route path="/nft-collections" element={<NFTCollections />} />
 			</Routes>
 		</>
