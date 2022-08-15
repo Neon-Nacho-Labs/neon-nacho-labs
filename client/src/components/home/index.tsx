@@ -7,7 +7,6 @@ function Home() {
 		<Box>
 			<Typography
 				variant="h3"
-				noWrap
 				textAlign="center"
 				m="1rem"
 			>
@@ -22,7 +21,7 @@ function Home() {
 					variant="body1"
 					paragraph={true}
 				>
-					Hi, my name is Travis Walter and I've been in the software development field, mainly web2, for many years. I got into crypto in 2017 and then into web3 and Solidity development in the end of 2021. I'm infatuated with everything web3, blockchain, and crypto and continue to go deeper into the rabbit hole. Neon Nacho Labs is my place to experiment with web3 projects. It's a playground for random ideas. A place to learn and build as I venture deep into the heart of this brave new web.
+					Hi, my name is Travis Walter and I've been in the software development field, mainly web2, for many years. I got into crypto in 2017 and then into web3 and Solidity development in the end of 2021. I'm fascinated with everything web3, blockchain, and crypto and continue to go deeper into the rabbit hole. Neon Nacho Labs is my place to experiment with web3 projects. It's a playground for random ideas. A place to learn and build as I venture deep into the heart of this brave new web.
 				</Typography>
 				<Typography
 					variant="body1"

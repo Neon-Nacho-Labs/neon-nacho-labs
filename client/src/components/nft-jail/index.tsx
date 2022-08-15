@@ -359,7 +359,6 @@ function NFTJail() {
 				<Grid item xs={12} sm={4}>
 					<Typography
 						variant="h5"
-						noWrap
 						textAlign="center"
 					>
 						Dev Notes

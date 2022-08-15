@@ -6,7 +6,6 @@ function Tokens() {
 		<Box>
 			<Typography
 				variant="h3"
-				noWrap
 				textAlign="center"
 				m="1rem"
 			>

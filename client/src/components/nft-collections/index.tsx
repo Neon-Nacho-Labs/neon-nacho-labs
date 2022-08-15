@@ -7,7 +7,6 @@ function NFTCollections() {
 		<Box>
 			<Typography
 				variant="h3"
-				noWrap
 				textAlign="center"
 				m="1rem"
 			>
@@ -20,7 +19,6 @@ function NFTCollections() {
 			>
 				<Typography
 					variant="h5"
-					noWrap
 					textAlign="center"
 					m="1rem"
 				>
@@ -32,7 +30,7 @@ function NFTCollections() {
 					paragraph={true}
 					textAlign="center"
 				>
-					A future sci-fi world with a constantly unfolding storyline, illustrated by a veteran NASA space artist. The genesis series (minting soon) will contain a very limited supply of 1-of-1 pieces.
+					A future sci-fi world with a constantly unfolding story line, illustrated by a veteran NASA space artist. The genesis series (minting soon) will contain a very limited supply of 1-of-1 pieces.
 				</Typography>
 
 				<Grid container justifyContent="center" alignItems="center" direction="column">
