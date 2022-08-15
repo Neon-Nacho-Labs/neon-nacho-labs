@@ -1,5 +1,6 @@
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 function NFTCollections() {
 	return (
@@ -18,12 +19,32 @@ function NFTCollections() {
 				}}
 			>
 				<Typography
+					variant="h5"
+					noWrap
+					textAlign="center"
+					m="1rem"
+				>
+					The Cerulean System (coming soon)
+				</Typography>
+
+				<Typography
 					variant="body1"
 					paragraph={true}
 					textAlign="center"
 				>
-					Coming soon
+					A future sci-fi world with a constantly unfolding storyline, illustrated by a veteran NASA space artist. The genesis series (minting soon) will contain a very limited supply of 1-of-1 pieces.
 				</Typography>
+
+				<Grid container justifyContent="center" alignItems="center" direction="column">
+					<Grid item key="zombie" justifyContent="center" alignItems="center">
+						<img
+							src='images/cerulean-1.jpg'
+							alt="The Cerulean System"
+							loading="lazy"
+							style={{display:"block", width: "90%", height:"auto", margin:"0 auto"}}
+						/>
+					</Grid>
+				</Grid>
 			</Box>
 		</Box>
 	);

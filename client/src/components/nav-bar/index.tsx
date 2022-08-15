@@ -31,12 +31,12 @@ const pages = [
 		label: 'NFT Jail'
 	},
 	{
-		link: '/coins',
-		label: 'Coins'
-	},
-	{
 		link: '/nft-collections',
 		label: 'NFT Collections'
+	},
+	{
+		link: '/coins',
+		label: 'Coins'
 	},
 ];
 
