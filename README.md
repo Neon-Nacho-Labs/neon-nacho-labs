@@ -10,5 +10,5 @@ http://neonnacho.xyz/
 * combine state
 * separate out components
 * consistent use of spacing and quotes
-* use/force https - requires upgrading heroku plan
+* force https
 * ...
