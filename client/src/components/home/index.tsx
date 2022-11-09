@@ -10,7 +10,7 @@ function Home() {
 				textAlign="center"
 				m="1rem"
 			>
-				WTF
+				Home
 			</Typography>
 			<Box
 				sx={{

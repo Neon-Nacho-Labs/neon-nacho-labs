@@ -24,7 +24,7 @@ import MUILink from '@mui/material/Link';
 const pages = [
 	{
 		link: '/',
-		label: 'WTF'
+		label: 'Home'
 	},
 	{
 		link: '/nft-jail',
